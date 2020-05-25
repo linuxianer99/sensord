@@ -6,7 +6,7 @@ name: CI
 # events but only for the master branch
 on:
   push:
-    branches: [ master ]
+    branches: [ cmake ]
   pull_request:
     branches: [ master ]
 
@@ -24,11 +24,10 @@ jobs:
     - uses: actions/checkout@v2
     - run: |
         git fetch --prune --unshallow
-
-    # Clean the build if necessary
-    - name: Clean the build
-      run: make clean
-
-    # Build software
-    - name: Build
-      run: make
+    
+    - name: Build CMake
+      uses: ashutoshvarma/action-cmake-build@v1
+      with:
+        # Build directory where build files will be generated
+        build-dir: ${{ runner.workspace }}/build
+        run-test: true
