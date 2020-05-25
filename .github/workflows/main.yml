@@ -30,4 +30,5 @@ jobs:
       with:
         # Build directory where build files will be generated
         build-dir: ${{ runner.workspace }}/build
+        parallel: 1
         run-test: true
