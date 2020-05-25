@@ -9,8 +9,8 @@ project(sensord C)
 #include(CMakePrintHelpers)
 
 # Enable ctest helpers
-#enable_testing()
+enable_testing()
 
 # add subdirectory
 add_subdirectory(src)
-#add_subdirectory(tests)
+add_subdirectory(tests)
