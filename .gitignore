@@ -1,5 +1,6 @@
 obj/*
 doc/*
+build/*
 sensord
 sensorcal
 *.bak
