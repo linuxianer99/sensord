@@ -16,8 +16,11 @@ ExternalProject_Get_Property(cmocka_ep SOURCE_DIR)
 cmake_print_variables(binary_dir)
 cmake_print_variables(SOURCE_DIR)
 
-link_directories(${binary_dir}/src)
 include_directories(${SOURCE_DIR}/include)
+
+add_library(cmocka SHARED IMPORTED)
+set_property(TARGET cmocka PROPERTY IMPORTED_LOCATION ${binary_dir}/src/libcmocka.so)
+add_dependencies(cmocka cmocka_ep) 
 
 add_executable(test_AirDensity test_AirDensity.c ../src/AirDensity.c ../src/AirDensity.h)
 target_link_libraries(test_AirDensity cmocka m)
